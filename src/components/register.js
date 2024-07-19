@@ -1,0 +1,50 @@
+import React, { useState } from "react";
+import SecondComponent from "../secondComponent";
+
+function RegisterPage(){
+    const [username,setUserName]=useState("")
+    const [password,setPassword]=useState("")
+    const [mobileNumber,setMobileNumber]=useState("")
+    const [address,setAddress]=useState("")
+    const [flag,setFlag]=useState(false)
+
+    function checkRegisterDetails(){
+        if(username !== ""){
+            if(password !== ""){
+                if(mobileNumber !== ""){
+                    if(address !==""){
+                            alert("registration sucess")
+                            setFlag(true)
+                    }else{
+                        alert("address is required")
+                    }
+                }else{
+                    alert("mobile number is required")
+                }
+            }
+            else{
+                alert("password is required")
+            }
+        }
+        else{
+            alert("username is required")
+        }
+    }
+
+    return(
+        <div style={{display:"grid",placeContent:"center"}}>
+            <h1>Registration Page</h1>
+            <label>Username</label>
+            <input type="text" value={username} onChange={(e)=>{setUserName(e.target.value)}}></input>
+            <label>password</label>
+            <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
+            <label>mobile number</label>
+            <input type="number" value={mobileNumber} onChange={(e)=>{setMobileNumber(e.target.value)}}></input>
+            <label>address</label>
+            <input type="text" value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
+            <button onClick={()=>{checkRegisterDetails()}}>Register</button>
+            {flag ? <SecondComponent/> :"please register to see details"}
+        </div>
+    )
+}
+export default RegisterPage;
