@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import SecondComponent from "../secondComponent";
+import LoginPage from "./Login";
 
 function RegisterPage(){
-    const [username,setUserName]=useState("")
+    const [registerUsername,setRegisterUserName]=useState("")
     const [password,setPassword]=useState("")
     const [mobileNumber,setMobileNumber]=useState("")
     const [address,setAddress]=useState("")
     const [flag,setFlag]=useState(false)
 
     function checkRegisterDetails(){
-        if(username !== ""){
+        if(registerUsername !== ""){
             if(password !== ""){
                 if(mobileNumber !== ""){
                     if(address !==""){
@@ -35,7 +35,7 @@ function RegisterPage(){
         <div style={{display:"grid",placeContent:"center"}}>
             <h1>Registration Page</h1>
             <label>Username</label>
-            <input type="text" value={username} onChange={(e)=>{setUserName(e.target.value)}}></input>
+            <input type="text" value={registerUsername} onChange={(e)=>{setRegisterUserName(e.target.value)}}></input>
             <label>password</label>
             <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
             <label>mobile number</label>
@@ -43,7 +43,7 @@ function RegisterPage(){
             <label>address</label>
             <input type="text" value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
             <button onClick={()=>{checkRegisterDetails()}}>Register</button>
-            {flag ? <SecondComponent/> :"please register to see details"}
+            {flag ? <LoginPage mobileNumber={mobileNumber} registerUsername={registerUsername} registerPassword={password}/> :"please register to see details"}
         </div>
     )
 }
