@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SecondComponent from "../secondComponent";
 import HomePage from "./Homepage";
+import NavBar from "./NavBar";
 
 function LoginPage(props){
     const [loginUsername,setLoginUserName]=useState("")
@@ -22,6 +23,8 @@ function LoginPage(props){
     }
 
     return(
+        <div>
+            <NavBar/>
         <div style={{display:"grid",placeContent:"center"}}>
             <h1>Login Page</h1>
             <label>Username</label>
@@ -30,6 +33,7 @@ function LoginPage(props){
             <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
             <button onClick={()=>{checkLoginDetails()}}>Login</button>
             {flag ? <HomePage username={loginUsername} setFlag={setFlag}/> :"login to see details"}
+        </div>
         </div>
     )
 }

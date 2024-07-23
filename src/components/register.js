@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginPage from "./Login";
+import NavBar from "./NavBar";
 
 function RegisterPage(){
     const [registerUsername,setRegisterUserName]=useState("")
@@ -32,6 +33,8 @@ function RegisterPage(){
     }
 
     return(
+        <div>
+            <NavBar/>
         <div style={{display:"grid",placeContent:"center"}}>
             <h1>Registration Page</h1>
             <label>Username</label>
@@ -44,6 +47,7 @@ function RegisterPage(){
             <input type="text" value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
             <button onClick={()=>{checkRegisterDetails()}}>Register</button>
             {flag ? <LoginPage mobileNumber={mobileNumber} registerUsername={registerUsername} registerPassword={password}/> :"please register to see details"}
+        </div>
         </div>
     )
 }
