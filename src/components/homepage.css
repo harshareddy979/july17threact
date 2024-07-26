@@ -1,0 +1,13 @@
+.homepage{
+    background: grey;
+    height: 27vh;
+    width: 34vw;
+    display: grid;
+    place-content: center;
+}
+
+.homepageMain{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10vh
+}
