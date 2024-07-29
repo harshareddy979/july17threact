@@ -9,6 +9,8 @@ import LoginPage from './components/Login';
 import RegisterPage from './components/register';
 import HomePage from './components/Homepage';
 import ContactPage from './components/Contact';
+import UseContext from './components/UseContext';
+import UseEffect from './components/useEffect';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +22,8 @@ root.render(
           <Route path='/register' element={<RegisterPage/>}></Route>
           <Route path='/homepage' element={<HomePage/>}></Route>
           <Route path='/contact' element={<ContactPage/>}></Route>
+          <Route path='/useContext' element={<UseContext/>}></Route>
+          <Route path='/useEffect' element={<UseEffect/>}></Route>
       </Routes>
   </BrowserRouter>
   
