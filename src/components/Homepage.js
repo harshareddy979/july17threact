@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import NavBar from "./NavBar";
 import "./homepage.css"
+import { initialState, ValuesReducer } from "./reducer";
 
-function HomePage(props){
+function HomePage(){
     var fruitsArray=["apple","banana","grapes","pineapple","orange"]
     var fruitsObject={"name":"apple","color":"red","taste":"sweet"}
     const [gender,setGender]=useState("");
+    const [reducerValues,dipatch]=useReducer(ValuesReducer,initialState)
+    function updateObject(){
+            fruitsObject={...fruitsObject, "price":200}
+            console.log(fruitsObject);
+    }
     return (
         <div>
             <NavBar/>
-            <h1>Welcome to HomePage {props.username}</h1>
+            <h1>Welcome to HomePage {reducerValues["username"]}</h1>
+            <button onClick={()=>{updateObject()}}>update objcet</button>
             <h2>Gender</h2>
             <input type="radio" checked={gender === "male"} onClick={()=>{setGender("male")}}></input>
             <label>Male</label>

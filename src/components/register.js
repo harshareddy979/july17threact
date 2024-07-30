@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import LoginPage from "./Login";
 import NavBar from "./NavBar";
+import { initialState, ValuesReducer } from "./reducer";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage(){
     const [registerUsername,setRegisterUserName]=useState("")
@@ -8,13 +10,17 @@ function RegisterPage(){
     const [mobileNumber,setMobileNumber]=useState("")
     const [address,setAddress]=useState("")
     const [flag,setFlag]=useState(false)
+    const [reducerValues,dispatch]=useReducer(ValuesReducer,initialState)
+    const navigate=useNavigate()
 
-    function checkRegisterDetails(){
+    async function checkRegisterDetails(){
         if(registerUsername !== ""){
             if(password !== ""){
                 if(mobileNumber !== ""){
                     if(address !==""){
+                            await dispatch({"type":"values","username":registerUsername,"password":password})
                             alert("registration sucess")
+                            navigate("/login")
                             setFlag(true)
                     }else{
                         alert("address is required")
@@ -46,7 +52,7 @@ function RegisterPage(){
             <label>address</label>
             <input type="text" value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
             <button onClick={()=>{checkRegisterDetails()}}>Register</button>
-            {flag ? <LoginPage mobileNumber={mobileNumber} registerUsername={registerUsername} registerPassword={password}/> :"please register to see details"}
+            {/* {flag ? <LoginPage mobileNumber={mobileNumber} registerUsername={registerUsername} registerPassword={password}/> :"please register to see details"} */}
         </div>
         </div>
     )
